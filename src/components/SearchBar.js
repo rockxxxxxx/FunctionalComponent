@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import List from "./List";
 
-export default function SearchBar() {
+export default function Search() {
   const [term, setTerm] = useState("programming");
   const [results, setResults] = useState([]);
-  console.log(results);
+
   useEffect(() => {
     const search = async () => {
       const { data } = await axios.get("https://en.wikipedia.org/w/api.php", {
@@ -20,9 +20,12 @@ export default function SearchBar() {
 
       setResults(data.query.search);
     };
-    if (term) {
-      search();
-    }
+
+    const timeoutId = setTimeout(() => {
+      if (term) {
+        search();
+      }
+    }, 500);
   }, [term]);
 
   const renderedResult = results.map((result) => {
