@@ -1,5 +1,5 @@
 import "./App.css";
-import Accordion from "./components/Accordion";
+import SearchBar from "./components/SearchBar";
 
 const data = [
   {
@@ -30,7 +30,7 @@ const data = [
 function App() {
   return (
     <>
-      <Accordion data={data} />
+      <SearchBar />
     </>
   );
 }
